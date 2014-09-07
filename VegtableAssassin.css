@@ -1,2 +1,61 @@
 body {
+	background-color: #FFC600;
+	font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+}
+
+#titleBanner {
+	position: relative;
+	text-align: center;
+	padding: 5px;
+	margin: 20px;
+	background-color: #FFFFFF;
+}
+
+h1 {
+	font-family: "Papyrus", fantasy;
+}
+
+#instructions {
+	position: absolute;
+	top: 175px;
+	left: 25px;
+	text-align: left;
+	padding: 20px;
+	margin: auto;
+	float: right;
+	height: 575px;
+	width: 325px;
+	color: #FFFFFF;
+	background-color: #432E43;
+}
+
+#canvas_Backround {
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	width: 610px;
+	height: 610px;
+	border-radius: 25px;
+	background-color: #000000;
+
+}
+
+#pointvalue {
+	position: absolute;
+	top: 175px;
+	right: 25px;
+	text-align: left;
+	padding: 20px;
+	margin: auto;
+	float: right;
+	height: 575px;
+	width: 325px;
+	background-color: #32A1B5;
+}
+
+#closingBanner {
+	text-align: center;
+	padding: 5px;
+	margin: 20px;
+	background-color: #FFFFFF;
 }

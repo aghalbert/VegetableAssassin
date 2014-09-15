@@ -8,17 +8,18 @@
 		<script type="text/javascript" src="gameLogic.js" ></script>
 	</head>
 
-	<body>
+	<body onload="setCanvasVars(); loadCanvas();">
 		<div id="mainPannel"> 
 			<div id="titleBanner">
 				<h1>Vegetable Assassin!</h1>
-				<p>Like Fruit Ninga but Better!!</p>
+				<p>Like Fruit Ninja but Better!!</p>
 			</div>
 			<div id="instructions">
 				<h3>Instructions:</h3>
 			</div>
 			<div id="canvas_Backround">
 				<div id="game_Canvas"></div>
+				<canvas width="610" height="610" id="gameCanvas"></canvas>
 			</div>
 			<div id="pointvalue">
 				<h3>Points per Fruit:</h3>

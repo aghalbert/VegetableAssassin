@@ -1,21 +1,32 @@
 // Globel Variables:
-var int score = 0; / 
+var score = 0;  
+var canvas;
+var context;
+var midX;
+var midY;
+
 
 // Start of Script:
-
-window.onload = function() {
+function setCanvasVars() {
+	canvas = document.getElementById("gameCanvas");
+	context = canvas.getContext("2d");
+	midX = canvas.width/2;
+	midY = canvas.height/2;
+	}
 	
-	//Create canvase
-
+function loadCanvas() {
+	context.font = "30px Arial";
+	context.fillStyle = "black";
+	context.fillText("Start Game", midX-20, midY);
 }
 
 function start() {
 
-	// Click on the start button that will be in the middle canvase.
+	// Click on the start button that will be in the middle canvas.
 	// this method should also be use to restart a new game after finishing an old one.
 }
 
-function flyingFruit() {
+function flyingVeggies() {
 
 	// May need to break this up into more methods
 	// If will display the fruit flying from one side of the screen to the other
@@ -44,7 +55,7 @@ function displayScore(){
 	//Function for displaying the score
 }
 
-function updateScore(int score){
+function updateScore(score){
 
 	//Fuction for updateing score
 }

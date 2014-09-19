@@ -13,6 +13,7 @@ function setCanvasVars() {
 	midX = canvas.width/2;
 	midY = canvas.height/2;
 	canvas.addEventListener("mousedown", start);
+	console.log(canvas.height);
 
 }
 	
@@ -73,19 +74,39 @@ function flyingVeggies() {
 	// using projectile motion.
 	var veg = new Image();
 	veg.src = "./src/eggPlant.jpg"
+
 	var vegX = 0;
 	var vegY = canvas.height + 30;
-	window.setInterval(function() { 
-		context.clearRect(vegX, vegY, 30, 30);
-		vegX = vegX + 20; // put physics here 
-		vegY = vegY - 20; // put some physics here too
+	//maybe someday we'll randomize these...
+	var vx = 40; // inital velocity in the x direction
+	var vy = 10; // initial velocity in the y direction
+
+	var startTime = new Date().getTime(); 
+	var currentTime = 0; 
+
+	var id = window.setInterval(function() { 
+		context.clearRect(vegX, vegY, 35, 35);
+		currentTime = (new Date().getTime() - startTime)/1000;
+		vegX = getXPosition(vx, currentTime);
+		vegY = canvas.height - getYPosition(vy, currentTime);
+		vy = getVy(vy, currentTime);
+		console.log(vegX + " " + vegY );
 		context.drawImage(veg, vegX, vegY, 30, 30);
-	}, 500);
+	}, 50);
+
+	window.setTimeout(function() {clearInterval(id);}, 5000);
 }
 
-function moveVeggie(veggie) {
-	context.clearRect(0, 0, canvas.width, canvas.height);
-	context.drawImage(veggie, 0, canvas.height+30, 30, 30);
+function getXPosition(v0, t) {
+	return v0*t; 
+}
+
+function getYPosition(v0, t) {
+	return v0*t + 0.5*2*t*t; 
+}
+
+function getVy(v0, t) {
+	return v0 + 2*t;
 }
 
 function veggieDestruction() {

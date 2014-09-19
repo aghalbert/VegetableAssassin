@@ -1,6 +1,5 @@
 body {
-  background: url('./src/vegBackround.jpg') no-repeat center center fixed;
-  background-size: cover;
+  background-color:#99CC00;
   font-family: Futura, "Trebuchet MS", Arial, sans-serif;
 }
 

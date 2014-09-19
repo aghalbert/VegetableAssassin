@@ -118,7 +118,7 @@ function gameOver() {
 
 	context.fillStyle = "black";
 	context.font = "15px Papyrus"
-	context.fillText("Click to play again!", midX, midY + 20);
+	context.fillText("Click to play again!", midX, midY + 25);
 }
 
 

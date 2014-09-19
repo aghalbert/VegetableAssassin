@@ -73,7 +73,7 @@ function flyingVeggies() {
 	// If will display the fruit flying from one side of the screen to the other
 	// using projectile motion.
 	var veg = new Image();
-	veg.src = "./src/eggPlant.jpg"
+	veg.src = "./src/eggplant.png"
 
 	var vegX = 0;
 	var vegY = canvas.height + 30;

@@ -61,14 +61,31 @@ function start() {
 	// Click on the start button that will be in the middle canvas.
 	// this method should also be use to restart a new game after finishing an old one.
 	context.clearRect(0, 0, canvas.width, canvas.height);
-	window.setTimeout(gameOver, 1000); //Change this back to 30000  
+	window.setTimeout(gameOver, 10000); //Change this back to 30000 
+	flyingVeggies(); //just sends off one vegetable
+	//eventually we'll need something like this:
+	//window.setInterval(flyingVeggies, Math.random()*1000); 
 }
 
 function flyingVeggies() {
-
 	// May need to break this up into more methods
 	// If will display the fruit flying from one side of the screen to the other
 	// using projectile motion.
+	var veg = new Image();
+	veg.src = "./src/eggPlant.jpg"
+	var vegX = 0;
+	var vegY = canvas.height + 30;
+	window.setInterval(function() { 
+		context.clearRect(vegX, vegY, 30, 30);
+		vegX = vegX + 20; // put physics here 
+		vegY = vegY - 20; // put some physics here too
+		context.drawImage(veg, vegX, vegY, 30, 30);
+	}, 500);
+}
+
+function moveVeggie(veggie) {
+	context.clearRect(0, 0, canvas.width, canvas.height);
+	context.drawImage(veggie, 0, canvas.height+30, 30, 30);
 }
 
 function veggieDestruction() {

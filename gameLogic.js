@@ -13,19 +13,55 @@ function setCanvasVars() {
 	midX = canvas.width/2;
 	midY = canvas.height/2;
 	canvas.addEventListener("mousedown", start);
+
 }
 	
 function loadCanvas() {
-	context.font = "30px Arial";
+	//draw the start game screen
+
+	var startImage = new Image();
+
+	var grd = context.createRadialGradient(midX,midY,70,90,80,300);
+	
+	grd.addColorStop(0,"gray");
+	grd.addColorStop(1,"green");
+
+	context.beginPath();
+	context.fillStyle = grd;
+	context.fillRect(0,0,canvas.width,canvas.height);
+	context.stroke();
+
+	context.beginPath();
+	context.fillStyle = "black"
+	context.fillRect(midX-70,midY-45,140,37);
+	context.stroke();
+
+	context.beginPath();
+	context.fillStyle = "white"
+	context.fillRect(midX-65,midY-40,130,27);
+	context.stroke();
+
+	context.beginPath();
 	context.fillStyle = "black";
-	context.fillText("Start Game", midX-20, midY);
+	context.fillRect(midX-60,midY-37,120,20);
+	context.stroke();
+
+	context.beginPath();
+	context.font = "20px Papyrus bold";
+	context.fillStyle = "blue";
+	context.textAlign="center";
+	context.fillText("Start Game", midX, midY-20);
+	context.closePath();
+
+	startImage.src = "./src/startVeg.png";
+	startImage.onload = function() {context.drawImage(startImage,midX-40,midY-5,80,70);};
 }
 
 function start() {
 	// Click on the start button that will be in the middle canvas.
 	// this method should also be use to restart a new game after finishing an old one.
 	context.clearRect(0, 0, canvas.width, canvas.height);
-	window.setTimeout(gameOver, 3000); //Change this back to 30000  
+	window.setTimeout(gameOver, 1000); //Change this back to 30000  
 }
 
 function flyingVeggies() {
@@ -63,12 +99,26 @@ function updateScore(score) {
 }
 
 function gameOver() {
+
 	context.clearRect(0, 0, canvas.width, canvas.height);
-	context.font = "50px Arial";
-	context.fillText("GAME OVER", midX-50, midY);
-	context.font = "30px Arial";
-	context.fillText(score, midX, midY + 60);
-	context.fillText("Click to play again!", midX  - 30, midY + 120);
+
+	context.fillStyle = "black";
+	context.textAlign="center";
+	context.font = "30px Papyrus bold underline";
+	context.fillText("GAME OVER", midX, midY - 30);
+
+	context.beginPath();
+	context.fillStyle = "black"
+	context.fillRect(midX-23,midY-17,46,19);
+	context.stroke();
+
+	context.fillStyle = "blue";
+	context.font = "20px Papyrus";
+	context.fillText(score, midX, midY);
+
+	context.fillStyle = "black";
+	context.font = "15px Papyrus"
+	context.fillText("Click to play again!", midX, midY + 20);
 }
 
 

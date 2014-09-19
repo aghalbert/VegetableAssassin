@@ -10,9 +10,9 @@
 
 	<body onload="setCanvasVars(); loadCanvas();">
 		<div id="mainPannel"> 
-			<div id="titleBanner">
-				<h1>Vegetable Assassin!</h1>
-			</div>
+				<div id="titleBanner">
+					<h1>Vegetable Assassin!</h1>
+				</div>
 			<div id="instructions">
 				<h3>Instructions</h3>
 				<ul style="list-style-type:disc">
@@ -21,22 +21,32 @@
 					<li>Rule after next</li>
 				</ul> 
 			</div>
-			
-			<canvas id="gameCanvas"></canvas>
-			
+			<div id="mainContent">
+				<canvas id="gameCanvas" height="530" width="725"></canvas>
+				<div id="closingBanner">
+					<h2>Thanks for your visit!!</h2>
+				</div>
+			</div>
 			<div id="pointvalue">
 				<h3>Points per Vegetable</h3>
-				<dl>
-					<dt>Veggie name (pic?)</dt>
-						<dd>-number of point </dd>
-					<dt>Tomato:</dt>
-						<img id="tom" src="./src/tomato.gif">
-						<dd>  10 points</dd>
-				</dl> 
-
-			</div>
-			<div id="closingBanner">
-				<h2>Thanks for your visit!!</h2>
+				
+				<table id="pointTable">
+					<tr>
+						<th colspan="2">Veggie</th>
+						<th>Points</th>
+					</tr>
+					<tr>
+						<td>Tomato</td>
+						<td><img id="tom" src="./src/tomato.gif"></td>
+						<td>10 Points</td>
+					</tr>
+					<tr>
+						<td>Eggplant</td>
+						<td><img id="egg" src="./src/eggplant.png"></td>
+						<td>5 Points</td>
+					</tr>
+				</table>
+				
 			</div>
 		</div>
 	</body>

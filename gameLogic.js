@@ -21,6 +21,11 @@ function loadCanvas() {
 	//draw the start game screen
 
 	var startImage = new Image();
+	startImage.src = "./src/startVeg.png";
+	var knife = new Image();
+	knife.src= "./src/knife.png";
+	var knife2 = new Image();
+	knife2.src = "./src/knife2.png";
 
 	var grd = context.createRadialGradient(midX,midY,0,360,200,800);
 	
@@ -32,30 +37,38 @@ function loadCanvas() {
 	context.fillRect(0,0,canvas.width,canvas.height);
 	context.stroke();
 
-	context.beginPath();
+	context.beginPath(); //outer most rect
 	context.fillStyle = "black"
-	context.fillRect(midX-185,midY-98,370,104);
+	context.fillRect(midX-185,midY-118,370,104);
 	context.stroke();
 
-	context.beginPath();
+	context.beginPath(); // middle rect
 	context.fillStyle = "white"
-	context.fillRect(midX-175,midY-88,350,84);
+	context.fillRect(midX-175,midY-108,350,84);
 	context.stroke();
 
-	context.beginPath();
+	context.beginPath(); // inner most rect
 	context.fillStyle = "black";
-	context.fillRect(midX-165,midY-78,330,64);
+	context.fillRect(midX-165,midY-98,330,64);
 	context.stroke();
 
-	context.beginPath();
+	context.beginPath(); // Text
 	context.font = "70px Papyrus bold";
 	context.fillStyle = "blue";
 	context.textAlign="center";
-	context.fillText("Start Game", midX, midY-20);
+	context.fillText("Start Game", midX, midY-40);
 	context.closePath();
 
-	startImage.src = "./src/startVeg.png";
-	startImage.onload = function() {context.drawImage(startImage,midX-100,midY+40,200,180);};
+	knife.onload = function () {
+		context.drawImage(knife2, midX-300, midY+60,200,140); //left knife
+	}
+	startImage.onload = function () {
+		context.drawImage(startImage,midX-100,midY+40,220,180); // center fruit
+	}
+	knife2.onload = function () {
+		context.drawImage(knife, midX+100, midY+60,200,140); // right knife
+	}
+
 }
 
 function start() {

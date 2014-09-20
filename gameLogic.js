@@ -22,7 +22,7 @@ function loadCanvas() {
 
 	var startImage = new Image();
 
-	var grd = context.createRadialGradient(midX,midY,70,90,80,300);
+	var grd = context.createRadialGradient(midX,midY,0,360,200,800);
 	
 	grd.addColorStop(0,"gray");
 	grd.addColorStop(1,"green");
@@ -34,28 +34,28 @@ function loadCanvas() {
 
 	context.beginPath();
 	context.fillStyle = "black"
-	context.fillRect(midX-70,midY-45,140,37);
+	context.fillRect(midX-185,midY-98,370,104);
 	context.stroke();
 
 	context.beginPath();
 	context.fillStyle = "white"
-	context.fillRect(midX-65,midY-40,130,27);
+	context.fillRect(midX-175,midY-88,350,84);
 	context.stroke();
 
 	context.beginPath();
 	context.fillStyle = "black";
-	context.fillRect(midX-60,midY-37,120,20);
+	context.fillRect(midX-165,midY-78,330,64);
 	context.stroke();
 
 	context.beginPath();
-	context.font = "20px Papyrus bold";
+	context.font = "70px Papyrus bold";
 	context.fillStyle = "blue";
 	context.textAlign="center";
 	context.fillText("Start Game", midX, midY-20);
 	context.closePath();
 
 	startImage.src = "./src/startVeg.png";
-	startImage.onload = function() {context.drawImage(startImage,midX-40,midY-5,80,70);};
+	startImage.onload = function() {context.drawImage(startImage,midX-100,midY+40,200,180);};
 }
 
 function start() {
@@ -142,21 +142,21 @@ function gameOver() {
 
 	context.fillStyle = "black";
 	context.textAlign="center";
-	context.font = "30px Papyrus bold underline";
-	context.fillText("GAME OVER", midX, midY - 30);
+	context.font = "80px Papyrus bold underline";
+	context.fillText("GAME OVER", midX, midY - 100);
 
 	context.beginPath();
 	context.fillStyle = "black"
-	context.fillRect(midX-23,midY-17,46,19);
+	context.fillRect(midX-50,midY-54,100,64);
 	context.stroke();
 
 	context.fillStyle = "blue";
-	context.font = "20px Papyrus";
+	context.font = "70px Papyrus";
 	context.fillText(score, midX, midY);
 
 	context.fillStyle = "black";
-	context.font = "15px Papyrus"
-	context.fillText("Click to play again!", midX, midY + 20);
+	context.font = "40px Papyrus"
+	context.fillText("Click to play again!", midX, midY + 80);
 }
 
 

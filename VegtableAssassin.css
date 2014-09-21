@@ -1,31 +1,41 @@
+html { 
+	background-color:gray; /*#99CC00 #0099FF*/
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 100%;
+	width: 100%;
+}
+
 body {
-  background-color:#DEE34F; /*used in the past: #99CC00, #75A0F0*/
-  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+	font-family: Futura, "Trebuchet MS", Arial, sans-serif;
 }
 
 #mainContent {
 	position: absolute;
 	overflow: auto;
-	top: 18%; 
+	top: 16%; 
 	left: 24%;
 	right: 25%;
 	width:52%;
-	height:80%;
+	height:100%;
 }
 
 #titleBanner {
 	position: absolute;
+	text-shadow: 4px 0px 2px #FFFFFF;
+	top: 0px;
+	left: 0px;
+	right: 0px;
 	font-family: "Papyrus", fantasy;
-	font-size: 4.0em;
-	padding: 2px;
+	font-size: 3.6em;
+	padding: 0.5%;
 	font-weight: bold;
-	height: 11%;
-	width: 97%;
+	height: 12%;
+	width: auto;
+	margin: 5px;
 	text-align: center;
-	border: solid black;
-	margin: 1%;
-	border-radius: 20px;
-	background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+	background: linear-gradient(to left, #660033,#990033,#FF6600,#336600,#99CC00);
 }
 
 
@@ -39,18 +49,17 @@ h3 {
 #instructions {
 	position: absolute;
 	overflow: auto;
-	top: 18%;
+	top: 16%;
 	left: 1%;
 	text-align: left;
 	padding: 10px;
-	margin: auto;
-	height: 75%;
+	height: 88%;
 	width: 20%;
 	color: #FFFFFF;
-	background-color: #432E43;
 	border-radius: 15px;
 	opacity: 0.5;
 	border: solid #5E5E5E;
+	background: linear-gradient(to bottom, #432E43, #432EAA, #43AAAA, #4AAAAA, #AAAAAA);
 }
 
 #instructions:hover {
@@ -58,6 +67,15 @@ h3 {
 	border: solid black;
 }
 
+.textImg{
+	height: 6%;
+	width: 6%;
+}
+
+.textImg2 {
+	height: 8%;
+	width: 8%;
+}
 
 #gameCanvas {
 	position: relative;
@@ -76,7 +94,7 @@ h3 {
 	position: relative;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 1%;
+	margin-top: 0.5%;
 	width:725px;
 	height:75px;
 	background-color: white;
@@ -87,13 +105,12 @@ h3 {
 #pointvalue {
 	position: absolute;
 	overflow: auto;
-	top: 18%;
+	top: 16%;
 	right: 1%;
 	text-align: left;
 	padding: 10px;
-	margin: auto;
 	float: right;
-	height: 75%;
+	height: 88%;
 	width: 20%;
 	background-color: #B54632;
 	border-radius: 15px;
@@ -156,17 +173,20 @@ h3 {
 }
 
 #closingBanner {
-	position: relative;
-	margin-top: 4%;
-	left: 0px;
-	right: 0px;
+	position: absolute;
+	top: 106.5%;
+	left: 5px;
+	right: 5px;
+	margin-bottom: 5px;
+	padding: 2%;
+
 	text-align: center;
+	vertical-align: middle;
+	height: 4%;
 	width: auto;
-	border: solid black;
-	background: linear-gradient(to left, red, orange, yellow, green, blue, indigo, violet);
-	border-radius: 20px;
+	background: linear-gradient(to right, #660033,#990033,#FF6600,#336600,#99CC00);
 }
 
 #closingBanner:hover {
-	background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+	background: linear-gradient(to left, #660033,#990033,#FF6600,#336600,#99CC00);
 }

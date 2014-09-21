@@ -112,7 +112,7 @@ h3 {
 	float: right;
 	height: 88%;
 	width: 20%;
-	background-color: #B54632;
+	background-color: #990033;
 	border-radius: 15px;
 	opacity: 0.5;
 	border: solid #5E5E5E;
@@ -124,47 +124,47 @@ h3 {
     margin-right: auto;
     width: 100%;
 	padding: 10px;
-	border: 8px solid #32A1B5; /* solid blue border 10px in width */
+	border: 8px solid #009966; /* solid blue border 10px in width */
     border-collapse: collapse;
 	border-radius: 15px;
 }
 
 #pointTable td {
-	border: 2px solid #32A1B5;
+	border: 2px solid #009966;
     border-collapse: collapse;
     padding: 5px; 
     text-align: center;
 }
 
 #pointTable th {
-	border: 2px solid #32A1B5;
+	border: 2px solid #009966;
     border-collapse: collapse;
     padding-bottom: 10px;
     padding: 5px;
     font-weight: bold;
-    background-color: #E68C7C;
+    background-color: #CC3D6D;
     text-align: center;
 }
 
 #pointvalue:hover {
 	opacity: 1.0;
 	border:solid black;
-	background-color: #32A1B5;
+	background-color: #009966;
 
 }
 
 #pointvalue:hover #pointTable {
 	/*background-color: #32A1B5;*/
-	border: 8px solid #B54632;
+	border: 8px solid #990033;
 }
 
 #pointvalue:hover th {
-	border: 2px solid #B54632;
-	background-color: #7CD6E6;
+	border: 2px solid #990033;
+	background-color: #3DCC9C;
 }
 
 #pointvalue:hover td {
-	border: 2px solid #B54632;
+	border: 2px solid #990033;
 }
 
 .tablePic {

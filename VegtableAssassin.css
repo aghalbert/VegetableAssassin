@@ -23,7 +23,8 @@ body {
 
 #titleBanner {
 	position: absolute;
-	text-shadow: 4px 0px 2px #FFFFFF;
+	color: white;
+	text-shadow: 8px 6px 4px black;
 	top: 0px;
 	left: 0px;
 	right: 0px;

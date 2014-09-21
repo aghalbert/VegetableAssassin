@@ -149,6 +149,11 @@ function update() {
 function collisionCheck(evt) {
 	var x = evt.offsetX; 
 	var y = evt.offsetY; 
+	
+	var slash = new Image();
+	slash.src = "./src/slash.png";
+	context.drawImage(slash, x-slash.width/2, y-slash.height/2, slash.width, slash.height);	
+
 	var i = 0;
 
 	while(i < veggies.length) {
@@ -163,6 +168,7 @@ function collisionCheck(evt) {
 			console.log("ALL GOOD");
 		}	
 	}
+
 }
 
 function flyingVeggies() {

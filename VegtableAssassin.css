@@ -15,20 +15,19 @@ body {
 
 #titleBanner {
 	position: absolute;
-	left: 0.1%;
+	font-family: "Papyrus", fantasy;
+	font-size: 4.0em;
+	padding: 2px;
+	font-weight: bold;
 	height: 11%;
 	width: 97%;
 	text-align: center;
 	border: solid black;
-	padding: 5px;
 	margin: 1%;
 	border-radius: 20px;
 	background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
 }
 
-h1 {
-	font-family: "Papyrus", fantasy;
-}
 
 h3 {
 	font-weight: bold;
@@ -58,14 +57,29 @@ h3 {
 	border: solid black;
 }
 
-canvas {
+
+#gameCanvas {
 	position: relative;
 	width:725px;
 	height:530px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 5%;
-	background-color:white;
+	background-color: white;
+	border:8px groove black;
+	display: block;
+}
+
+
+#scoreCanvas {
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 1%;
+	margin-bottom: 5%;
+	width:725px;
+	height:75px;
+	background-color: white;
 	border:8px groove black;
 	display: block;
 }
@@ -146,13 +160,17 @@ canvas {
 }
 
 #closingBanner {
-	position: absolute;
-	bottom: 1.7%;
+	position: relative;
+	margin-top: 13%;
 	left: 0px;
 	right: 0px;
 	text-align: center;
 	width: auto;
 	border: solid black;
-	background: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
+	background: linear-gradient(to left, red, orange, yellow, green, blue, indigo, violet);
 	border-radius: 20px;
+}
+
+#closingBanner:hover {
+	background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
 }

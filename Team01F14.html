@@ -9,43 +9,63 @@
 	</head>
 
 	<body onload="setCanvasVars(); loadCanvas();">
-				<div id="titleBanner">
-					<h1>Vegetable Assassin!</h1>
-				</div>
-			<div id="instructions">
-				<h3>Instructions</h3>
-				<ul style="list-style-type:disc">
-					<li>To start the game click anywhere in the <br> canvas to the left.</li>
-					<br>
+		
+		<h1 id="titleBanner" >Vegetable Assassin!</h1>
+		
+		<div id="instructions">
+			<h3>&spades; Instructions &spades;</h3>
+			<ul style="list-style-type:disc">
+				<li>
+					To start the game click anywhere in the <br>
+					canvas to the left.
+				</li>
+				<br>
+				<li>
+					For each Flying veggie you assassinate you <br>
+					will gain the number of pionts that veggie <br>
+					was worth. Point values are to the left.
+				</li>
+				<br>
+				<li>
+					Try not the hit any grenades! You can only <br>
+					sustain 3 hits (<img src="./src/x-mark.png" height="14" width="14">) befor your game is over.
+				</li>
+				<br>
+				<li>
+					Next rule
+				</li>
+				<br>
+				<li>
+					Rule after next
+				</li>
+			</ul> 
+		</div>
+		
+		<div id="mainContent">
+			<canvas id="gameCanvas" height="530" width="725"></canvas>
+			<canvas id="scoreCanvas" height="75" width="725"></canvas>
+			<div id="closingBanner">
+				<h2>Thanks for your visit!!</h2>
+			</div>
+		</div>
 
-					<li>Next rule</li>
-					<li>Rule after next</li>
-				</ul> 
-			</div>
-			<div id="mainContent">
-				<canvas id="gameCanvas" height="530" width="725"></canvas>
-				<div id="closingBanner">
-					<h2>Thanks for your visit!!</h2>
-				</div>
-			</div>
-			<div id="pointvalue">
-				<h3>Points per Vegetable</h3>
-				
-				<table id="pointTable">
-					<tr>
-						<th colspan="2">Veggie</th>
-						<th>Points</th>
-					</tr>
-					<tr>
-						<td>Tomato</td>
-						<td><img id="tom" src="./src/tomato.gif"></td>
-						<td>10 Points</td>
-					</tr>
-					<tr>
-						<td>Eggplant</td>
-						<td><img id="egg" src="./src/eggplant.png"></td>
-						<td>5 Points</td>
-					</tr>
+		<div id="pointvalue">
+			<h3>&hearts; Points per Vegetable &hearts;</h3>		
+			<table id="pointTable">
+				<tr>
+					<th colspan="2">Veggie</th>
+					<th>Points</th>
+				</tr>
+				<tr>
+					<td>Tomato</td>
+					<td><img id="tom" src="./src/tomato.gif"></td>
+					<td>10 Points</td>
+				</tr>
+				<tr>
+					<td>Eggplant</td>
+					<td><img id="egg" src="./src/eggplant.png"></td>
+					<td>5 Points</td>
+				</tr>
 				</table>
 				
 			</div>

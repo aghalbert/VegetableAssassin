@@ -1,39 +1,57 @@
 // Globel Variables:
-var score = 0;  
+var score;
+var strikeNum;
 var canvas;
 var context;
 var midX;
 var midY;
+var homeGrd
+var startImage;
+var knife;
+var knife2;
+var x_mark; 
 
 
 // Start of Script:
 function setCanvasVars() {
+	
+	score = 0;
+
 	canvas = document.getElementById("gameCanvas");
 	context = canvas.getContext("2d");
-	midX = canvas.width/2;
-	midY = canvas.height/2;
 	canvas.addEventListener("mousedown", start);
 	console.log(canvas.height);
+
+	scoreCanvas = document.getElementById("scoreCanvas");
+	scoreContext = scoreCanvas.getContext("2d");
+	
+	midX = canvas.width/2;
+	midY = canvas.height/2;
+
+	homeGrd = context.createRadialGradient(midX,midY,0,360,200,800);
+
+	startImage = new Image();
+	startImage.src = "./src/startVeg.png";
+	
+	knife = new Image();
+	knife.src= "./src/knife.png";
+	
+	knife2 = new Image();
+	knife2.src = "./src/knife2.png";
+
+	x_mark = new Image();
+	x_mark.src = "./src/x-mark.png";
 
 }
 	
 function loadCanvas() {
-	//draw the start game screen
 
-	var startImage = new Image();
-	startImage.src = "./src/startVeg.png";
-	var knife = new Image();
-	knife.src= "./src/knife.png";
-	var knife2 = new Image();
-	knife2.src = "./src/knife2.png";
-
-	var grd = context.createRadialGradient(midX,midY,0,360,200,800);
-	
-	grd.addColorStop(0,"gray");
-	grd.addColorStop(1,"green");
+	//draw the start game screen on the game canvas
+	homeGrd.addColorStop(0,"gray");
+	homeGrd.addColorStop(1,"green");
 
 	context.beginPath();
-	context.fillStyle = grd;
+	context.fillStyle = homeGrd;
 	context.fillRect(0,0,canvas.width,canvas.height);
 	context.stroke();
 
@@ -69,6 +87,29 @@ function loadCanvas() {
 		context.drawImage(knife, midX+100, midY+60,200,140); // right knife
 	}
 
+	//draws the strat up screen on the score convas
+	scoreContext.beginPath();
+	scoreContext.fillStyle = homeGrd;
+	scoreContext.fillRect(0,0,scoreCanvas.width,scoreCanvas.height);
+	scoreContext.stroke();
+
+	scoreContext.beginPath();
+	scoreContext.moveTo((scoreCanvas.width/2),0);
+	scoreContext.lineTo((scoreCanvas.width/2),scoreCanvas.height);
+	scoreContext.lineWidth = 6;
+	scoreContext.stroke();
+
+	scoreContext.beginPath(); // Text
+	scoreContext.font = "45px Papyrus bold";
+	scoreContext.fillStyle = "black";
+	scoreContext.textAlign="left";
+	scoreContext.fillText("Strikes:",5,(scoreCanvas.height/2)+15);
+	scoreContext.font = "50px Papyrus bold";
+	scoreContext.fillText("Score:",(scoreCanvas.width/2)+8,(scoreCanvas.height/2)+15);
+	scoreContext.closePath();
+
+	displayScore();
+	stk(0);
 }
 
 function start() {
@@ -140,18 +181,42 @@ function chopTrail() {
 }
 
 function displayScore() {
+	//Function for displaying/updateing the score
+	scoreContext.beginPath();
+	scoreContext.fillStyle = "black"
+	scoreContext.fillRect((scoreCanvas.width/2)+140,5,215,65);
+	scoreContext.closePath();
 
-	//Function for displaying the score
+	scoreContext.beginPath();
+	scoreContext.font = "50px Papyrus bold";
+	scoreContext.fillStyle = "blue";
+	scoreContext.textAlign="center";
+	scoreContext.fillText(score,(scoreCanvas.width/2)+248,(scoreCanvas.height/2)+17);
 }
 
-function updateScore(score) {
+function stk(stkNum){ // cant use strike it resevered for some reason
 
-	//Fuction for updating score
+	stkNum = (typeof stkNum == null) ? (stickNum+1) : stkNum;
+
+	scoreContext.beginPath();
+	scoreContext.fillStyle = "black"
+	scoreContext.fillRect(145,5,208,65);
+	scoreContext.closePath();
+
+	var count
+
+	for (i=0; i < stkNum; i++){
+
+		scoreContext.drawImage(x_mark,160+(i*60)+((i-1)*5),8,60,60);
+	}
 }
 
 function gameOver() {
 
-	context.clearRect(0, 0, canvas.width, canvas.height);
+	context.beginPath();
+	context.fillStyle = homeGrd;
+	context.fillRect(0,0,canvas.width,canvas.height);
+	context.stroke();
 
 	context.fillStyle = "black";
 	context.textAlign="center";
@@ -160,7 +225,7 @@ function gameOver() {
 
 	context.beginPath();
 	context.fillStyle = "black"
-	context.fillRect(midX-50,midY-54,100,64);
+	context.fillRect(midX-80,midY-54,160,65);
 	context.stroke();
 
 	context.fillStyle = "blue";

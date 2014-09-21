@@ -1,5 +1,5 @@
 html { 
-	background-color:gray; /*#99CC00 #0099FF*/
+	background-color:#999999; /*#99CC00 #0099FF*/
 	position: absolute;
 	top: 0px;
 	left: 0px;
@@ -85,20 +85,21 @@ h3 {
 	margin-right: auto;
 	margin-top: 0%;
 	background-color: white;
-	border:8px groove black;
+	border:4px solid black;
+	box-shadow: 10px 15px 5px #737373;
 	display: block;
 }
-
 
 #scoreCanvas {
 	position: relative;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 0.5%;
+	margin-top: 1.5%;
 	width:725px;
 	height:75px;
 	background-color: white;
-	border:8px groove black;
+	border:4px solid black;
+	box-shadow: 10px 15px 5px #737373;
 	display: block;
 }
 

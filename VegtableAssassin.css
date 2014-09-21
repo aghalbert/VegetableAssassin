@@ -14,26 +14,14 @@ body {
 #mainContent {
 	position: absolute;
 	overflow: auto;
-	top: 16%; 
+	top: 18%; 
 	left: 24%;
 	right: 25%;
 	width:52%;
 	height:100%;
 }
 
-#banner {
-	position: absolute;
-	text-align: center;
-	top: 0px;
-	left: 0px;
-	right: 0px;
-	background-image:url('src/Banner.png');
-	background-position:center center;
-	background-repeat:no-repeat;
-	width:auto;
-	height:20%;
-	margin-top:0px;
-}
+
 
 #titleBanner {
 	position: absolute;
@@ -46,13 +34,21 @@ body {
 	font-size: 3.6em;
 	padding: 0.5%;
 	font-weight: bold;
-	height: 12%;
+	height: 20%;
 	width: auto;
 	margin: 5px;
 	text-align: center;
 	background: linear-gradient(to left, #660033,#990033,#FF6600,#336600,#99CC00);
 }
 
+#banner {
+	margin: auto;
+	height: 90%;
+	width: 40%;
+	/* background-image:url('src/Banner.png');
+	background-position:center center;
+	background-repeat:no-repeat; */ 
+}
 
 h3 {
 	text-shadow: 6px 4px 2px black;

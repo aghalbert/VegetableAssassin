@@ -126,41 +126,63 @@ function flyingVeggies() {
 	// May need to break this up into more methods
 	// If will display the fruit flying from one side of the screen to the other
 	// using projectile motion.
+	
 	var veg = new Image();
 	veg.src = "./src/eggplant.png"
 
-	var vegX = 0;
-	var vegY = canvas.height + 30;
+	// initial position
+	var x0 = 0;
+	var y0 = canvas.height/2;
+
+	// current position (starts at initial position)
+	var vegX = x0;
+	var vegY = y0; 
+
+	//the angle of initial velocity
+	var theta = (Math.PI/6);
+
 	//maybe someday we'll randomize these...
-	var vx = 40; // inital velocity in the x direction
-	var vy = 10; // initial velocity in the y direction
+	var vx = 175; // inital velocity in the x direction
+	var vy = -50; // initial velocity in the y direction
 
 	var startTime = new Date().getTime(); 
 	var currentTime = 0; 
 
-	var id = window.setInterval(function() { 
+	var id = window.setInterval(function() {
+
 		context.clearRect(vegX, vegY, 35, 35);
 		currentTime = (new Date().getTime() - startTime)/1000;
-		vegX = getXPosition(vx, currentTime);
-		vegY = canvas.height - getYPosition(vy, currentTime);
-		vy = getVy(vy, currentTime);
-		console.log(vegX + " " + vegY );
+
+		vegX = getXPosition(x0, vx, currentTime, theta);
+		vegY = getYPosition(y0, vy, currentTime, theta);
+
+		//vx = getVx(vx, currentTime, theta);
+		//vy = getVy(vy, currentTime, theta); 
+
+		console.log("x=" + vegX + "; y=" + vegY + "; vx=" + vx + "; vy=" + vy + "; time=" + currentTime);
 		context.drawImage(veg, vegX, vegY, 30, 30);
 	}, 50);
 
-	window.setTimeout(function() {clearInterval(id);}, 5000);
+	window.setTimeout(function() {clearInterval(id);}, 6500);
 }
 
-function getXPosition(v0, t) {
-	return v0*t; 
+function getXPosition(x0, vx0, time, theta) {
+		// rx(time) = [Vx0*Cos(theta)*t]
+	return ( x0+(vx0*Math.cos(theta)*time) );
 }
 
-function getYPosition(v0, t) {
-	return v0*t + 0.5*2*t*t; 
+function getVx(vx0, time, theta){
+	return ( (vx0*Math.cos(theta)) );
 }
 
-function getVy(v0, t) {
-	return v0 + 2*t;
+function getYPosition(y0, vy0, time, theta) {
+		// ry(time)= [height] + [(V0*Sin(theta))time] + [(1/2)*g*t^2]
+	return ( y0-( vy0*Math.sin(theta)*time )+( 0.5*(9.81)*(time*time) ) ); 
+}
+
+function getVy(vy0, time, theta) {
+		// Vy(time)= [V0*Sin(theta)] + [-g*t]
+	return ( -(vy0*Math.sin(theta))+((9.81)*time) );
 }
 
 function veggieDestruction() {

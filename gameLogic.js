@@ -1,4 +1,4 @@
-// Globel Variables:
+// Global Variables:
 var score;
 var strikeNum;
 var canvas;
@@ -10,6 +10,7 @@ var startImage;
 var knife;
 var knife2;
 var x_mark; 
+var veggies = new Array();
 
 
 // Start of Script:
@@ -112,25 +113,63 @@ function loadCanvas() {
 	stk(0);
 }
 
+function Vegetable(type, path, x, y, width, height) {
+	this.type = type; 
+	this.path = path; 
+	this.x = x;
+	this.y = y;
+	this.width = width;
+	this.height = height;
+	this.image = new Image(); 
+	this.image.src = path;
+	this.hit = false;
+}
+
 function start() {
 	// Click on the start button that will be in the middle canvas.
 	// this method should also be use to restart a new game after finishing an old one.
 	context.clearRect(0, 0, canvas.width, canvas.height);
-	window.setTimeout(gameOver, 10000); //Change this back to 30000 
+
+	var intervalId = window.setInterval(update, 10);
 	flyingVeggies(); //just sends off one vegetable
 	//eventually we'll need something like this:
 	//window.setInterval(flyingVeggies, Math.random()*1000); 
+
+	window.setTimeout( function () {
+		clearInterval(intervalId);
+		gameOver();
+	}, 10000); //Change this back to 30000 
+}
+
+function update() {
+	var i = 0;
+
+	while(i < veggies.length) {
+		if(veggies[i].hit){
+			veggieDestruction(veggies[i]);
+			veggies.splice(i, 1);
+		} else 
+			i++;
+	}
 }
 
 function flyingVeggies() {
 	// May need to break this up into more methods
 	// If will display the fruit flying from one side of the screen to the other
 	// using projectile motion.
-	var veg = new Image();
-	veg.src = "./src/eggplant.png"
 
-	var vegX = 0;
-	var vegY = canvas.height + 30;
+	//var veg = new Image();
+	//veg.src = "./src/eggplant.png"
+
+	var veg = new Vegetable("eggplant", "./src/eggplant.png", 0, canvas.height + 30, 30, 30)
+	veg.image.addEventListener("mousedown", function () {
+		veg.hit = true;
+	});
+	veggies.push(veg);
+
+	//var vegX = 0;
+	//var vegY = canvas.height + 30;
+
 	//maybe someday we'll randomize these...
 	var vx = 40; // inital velocity in the x direction
 	var vy = 10; // initial velocity in the y direction
@@ -139,13 +178,13 @@ function flyingVeggies() {
 	var currentTime = 0; 
 
 	var id = window.setInterval(function() { 
-		context.clearRect(vegX, vegY, 35, 35);
+		context.clearRect(veg.x, veg.y, 35, 35);
 		currentTime = (new Date().getTime() - startTime)/1000;
-		vegX = getXPosition(vx, currentTime);
-		vegY = canvas.height - getYPosition(vy, currentTime);
+		veg.x = getXPosition(vx, currentTime);
+		veg.y = canvas.height - getYPosition(vy, currentTime);
 		vy = getVy(vy, currentTime);
-		console.log(vegX + " " + vegY );
-		context.drawImage(veg, vegX, vegY, 30, 30);
+		console.log(veg.x + " " + veg.y );
+		context.drawImage(veg.image, veg.x, veg.y, veg.width, veg.height);
 	}, 50);
 
 	window.setTimeout(function() {clearInterval(id);}, 5000);
@@ -163,10 +202,13 @@ function getVy(v0, t) {
 	return v0 + 2*t;
 }
 
-function veggieDestruction() {
+function veggieDestruction(veg) {
 
 	// will display the flying veggies when being chopped and splatting on the screen.
 	// this will likely also update the score or will call that method.
+	context.clearRect(veg.x, veg.y, veg.width, veg.height);
+	updateScore(veg.type)
+	console.log("VEGGIE DESTRUCTION");
 }
 
 function bomHit() {

@@ -48,7 +48,7 @@ function loadCanvas() {
 
 	//draw the start game screen on the game canvas
 	homeGrd.addColorStop(0,"gray");
-	homeGrd.addColorStop(1,"green");
+	homeGrd.addColorStop(1,"#336600");
 
 	context.beginPath();
 	context.fillStyle = homeGrd;

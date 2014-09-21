@@ -104,6 +104,7 @@ h3 {
 
 #pointvalue {
 	position: absolute;
+	color: white;
 	overflow: auto;
 	top: 16%;
 	right: 1%;
@@ -119,7 +120,6 @@ h3 {
 }
 
 #pointTable {
-	/*background-color: #B54632; */
 	margin-left: auto; /* these two line center the table in the midle of the div */
     margin-right: auto;
     width: 100%;
@@ -130,7 +130,7 @@ h3 {
 }
 
 #pointTable td {
-	border: 2px solid #009966;
+	border: 2px solid #336600;
     border-collapse: collapse;
     padding: 5px; 
     text-align: center;

@@ -1,5 +1,5 @@
 html { 
-	background-color:#999999; /*#99CC00 #0099FF*/
+	background-color:#D2B48C; /*#99CC00 #0099FF*/
 	position: absolute;
 	top: 0px;
 	left: 0px;
@@ -19,6 +19,20 @@ body {
 	right: 25%;
 	width:52%;
 	height:100%;
+}
+
+#banner {
+	position: absolute;
+	text-align: center;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	background-image:url('src/Banner.png');
+	background-position:center center;
+	background-repeat:no-repeat;
+	width:auto;
+	height:20%;
+	margin-top:0px;
 }
 
 #titleBanner {

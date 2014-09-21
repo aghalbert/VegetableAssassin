@@ -143,14 +143,25 @@ function start() {
 }
 
 function update() {
+	canvas.addEventListener("mousedown", collisionCheck, false);
+}
+
+function collisionCheck(evt) {
+	var x = evt.offsetX; 
+	var y = evt.offsetY; 
 	var i = 0;
 
 	while(i < veggies.length) {
-		if(veggies[i].hit){
+		console.log(veggies[i].x + " " + veggies[i].y + " " + x + " " + y);
+		if(x > veggies[i].x && x < veggies[i].x + veggies[i].width && y > veggies[i].y && y < veggies[i].y + veggies[i].height){
 			veggieDestruction(veggies[i]);
+			veggies[i].hit = true;
 			veggies.splice(i, 1);
-		} else 
+			console.log("IM HIT");
+		} else {
 			i++;
+			console.log("ALL GOOD");
+		}	
 	}
 }
 
@@ -159,11 +170,7 @@ function flyingVeggies() {
 	// If will display the fruit flying from one side of the screen to the other
 	// using projectile motion.
 
-	var veg = new Vegetable("eggplant", "./src/eggplant.png", 0, canvas.height/2, 30, 30)
-	veg.image.addEventListener("mousedown", function () {
-		veg.hit = true;
-		console.log("IM HIT");
-	});
+	var veg = new Vegetable("eggplant", "./src/eggplant.png", 0, canvas.height/2, 50, 50)
 	veggies.push(veg);
 
 	// initial position
@@ -181,12 +188,14 @@ function flyingVeggies() {
 	var currentTime = 0; 
 
 	var id = window.setInterval(function() { 
-		context.clearRect(veg.x, veg.y, 35, 35);
-		currentTime = (new Date().getTime() - startTime)/1000;
-		veg.x = getXPosition(x0, vx, currentTime, theta);
-		veg.y = getYPosition(y0, vy, currentTime, theta);
-		console.log("x=" + veg.x + "; y=" + veg.y + "; vx=" + vx + "; vy=" + vy + "; time=" + currentTime);
-		context.drawImage(veg.image, veg.x, veg.y, veg.width, veg.height);
+		if(!veg.hit) {
+			context.clearRect(veg.x, veg.y, veg.width, veg.height);
+			currentTime = (new Date().getTime() - startTime)/1000;
+			veg.x = getXPosition(x0, vx, currentTime, theta);
+			veg.y = getYPosition(y0, vy, currentTime, theta);
+			//console.log("x=" + veg.x + "; y=" + veg.y + "; vx=" + vx + "; vy=" + vy + "; time=" + currentTime);
+			context.drawImage(veg.image, veg.x, veg.y, veg.width, veg.height);
+		}
 	}, 50);
 
 	window.setTimeout(function() {clearInterval(id);}, 6500);

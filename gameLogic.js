@@ -129,6 +129,7 @@ function start() {
 	// Click on the start button that will be in the middle canvas.
 	// this method should also be use to restart a new game after finishing an old one.
 	context.clearRect(0, 0, canvas.width, canvas.height);
+	canvas.removeEventListener("mousedown", start);
 
 	var intervalId = window.setInterval(update, 10);
 	flyingVeggies(); //just sends off one vegetable
@@ -158,9 +159,10 @@ function flyingVeggies() {
 	// If will display the fruit flying from one side of the screen to the other
 	// using projectile motion.
 
-	var veg = new Vegetable("eggplant", "./src/eggplant.png", 0, canvas.height + 30, 30, 30)
+	var veg = new Vegetable("eggplant", "./src/eggplant.png", 0, canvas.height/2, 30, 30)
 	veg.image.addEventListener("mousedown", function () {
 		veg.hit = true;
+		console.log("IM HIT");
 	});
 	veggies.push(veg);
 
@@ -299,6 +301,8 @@ function gameOver() {
 	context.fillStyle = "black";
 	context.font = "40px Papyrus"
 	context.fillText("Click to play again!", midX, midY + 80);
+	
+	canvas.addEventListener("mousedown", start);
 
 	stk(3);
 }

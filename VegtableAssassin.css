@@ -7,10 +7,10 @@ body {
 	position: absolute;
 	overflow: auto;
 	top: 18%; 
-	left: 25%;
+	left: 24%;
 	right: 25%;
-	width:50%;
-	height:93%;
+	width:52%;
+	height:80%;
 }
 
 #titleBanner {
@@ -38,12 +38,13 @@ h3 {
 
 #instructions {
 	position: absolute;
+	overflow: auto;
 	top: 18%;
 	left: 1%;
 	text-align: left;
 	padding: 10px;
 	margin: auto;
-	height: 89%;
+	height: 75%;
 	width: 20%;
 	color: #FFFFFF;
 	background-color: #432E43;
@@ -64,7 +65,7 @@ h3 {
 	height:530px;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 5%;
+	margin-top: 0%;
 	background-color: white;
 	border:8px groove black;
 	display: block;
@@ -76,7 +77,6 @@ h3 {
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 1%;
-	margin-bottom: 5%;
 	width:725px;
 	height:75px;
 	background-color: white;
@@ -86,13 +86,14 @@ h3 {
 
 #pointvalue {
 	position: absolute;
+	overflow: auto;
 	top: 18%;
 	right: 1%;
 	text-align: left;
 	padding: 10px;
 	margin: auto;
 	float: right;
-	height: 89%;
+	height: 75%;
 	width: 20%;
 	background-color: #B54632;
 	border-radius: 15px;
@@ -149,19 +150,14 @@ h3 {
 	border: 2px solid #B54632;
 }
 
-#tom {
+.tablePic {
 	height: 25%;
-	width: 25%;
-}
-
-#egg {
-	height: 25%;
-	width: 25%;
+	width: 30%;
 }
 
 #closingBanner {
 	position: relative;
-	margin-top: 13%;
+	margin-top: 4%;
 	left: 0px;
 	right: 0px;
 	text-align: center;

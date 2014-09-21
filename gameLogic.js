@@ -171,7 +171,7 @@ function veggieDestruction() {
 
 function bomHit() {
 
-	
+	stk(); // this will update 
 }
 
 function chopTrail() {
@@ -194,9 +194,22 @@ function displayScore() {
 	scoreContext.fillText(score,(scoreCanvas.width/2)+248,(scoreCanvas.height/2)+17);
 }
 
+function updateScore(vegg) {
+	
+	if (vegg == "tomato"){
+		score = score + 10;
+	} else if (vegg == "eggplant"){
+		score = score + 5;
+	} else if (vegg == "pumpken"){
+		score = score + 15;
+	} else {
+		
+	}
+}
+
 function stk(stkNum){ // cant use strike it resevered for some reason
 
-	stkNum = (typeof stkNum == null) ? (stickNum+1) : stkNum;
+	stkNum = (typeof stkNum == null) ? (strikeNum+1) : stkNum; // if there is no stkNum provided defalt to stickNum + 1  (the new global number the strikes)
 
 	scoreContext.beginPath();
 	scoreContext.fillStyle = "black"
@@ -209,6 +222,8 @@ function stk(stkNum){ // cant use strike it resevered for some reason
 
 		scoreContext.drawImage(x_mark,160+(i*60)+((i-1)*5),8,60,60);
 	}
+
+	strikeNum++;
 }
 
 function gameOver() {
@@ -235,6 +250,8 @@ function gameOver() {
 	context.fillStyle = "black";
 	context.font = "40px Papyrus"
 	context.fillText("Click to play again!", midX, midY + 80);
+
+	stk(3);
 }
 
 

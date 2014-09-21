@@ -158,25 +158,15 @@ function flyingVeggies() {
 	// If will display the fruit flying from one side of the screen to the other
 	// using projectile motion.
 
-	//var veg = new Image();
-	//veg.src = "./src/eggplant.png"
-
 	var veg = new Vegetable("eggplant", "./src/eggplant.png", 0, canvas.height + 30, 30, 30)
 	veg.image.addEventListener("mousedown", function () {
 		veg.hit = true;
 	});
 	veggies.push(veg);
 
-	//var vegX = 0;
-	//var vegY = canvas.height + 30;
-
 	// initial position
 	var x0 = 0;
 	var y0 = canvas.height/2;
-
-	// current position (starts at initial position)
-	//var vegX = x0;
-	//var vegY = y0; 
 
 	//the angle of initial velocity
 	var theta = (Math.PI/6);
@@ -193,7 +183,6 @@ function flyingVeggies() {
 		currentTime = (new Date().getTime() - startTime)/1000;
 		veg.x = getXPosition(x0, vx, currentTime, theta);
 		veg.y = getYPosition(y0, vy, currentTime, theta);
-		//vy = getVy(vy, currentTime);
 		console.log("x=" + veg.x + "; y=" + veg.y + "; vx=" + vx + "; vy=" + vy + "; time=" + currentTime);
 		context.drawImage(veg.image, veg.x, veg.y, veg.width, veg.height);
 	}, 50);

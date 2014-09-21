@@ -9,45 +9,100 @@
 	</head>
 
 	<body onload="setCanvasVars(); loadCanvas();">
-		<div id="mainPannel"> 
-				<div id="titleBanner">
-					<h1>Vegetable Assassin!</h1>
-				</div>
-			<div id="instructions">
-				<h3>Instructions</h3>
-				<ul style="list-style-type:disc">
-					<li>To start the game click anywhere in the canvas to the left.</li>
-					<li>Next rule</li>
-					<li>Rule after next</li>
-				</ul> 
-			</div>
-			<div id="mainContent">
-				<canvas id="gameCanvas" height="530" width="725"></canvas>
-				<div id="closingBanner">
-					<h2>Thanks for your visit!!</h2>
-				</div>
-			</div>
-			<div id="pointvalue">
-				<h3>Points per Vegetable</h3>
-				
-				<table id="pointTable">
-					<tr>
-						<th colspan="2">Veggie</th>
-						<th>Points</th>
-					</tr>
-					<tr>
-						<td>Tomato</td>
-						<td><img id="tom" src="./src/tomato.gif"></td>
-						<td>10 Points</td>
-					</tr>
-					<tr>
-						<td>Eggplant</td>
-						<td><img id="egg" src="./src/eggplant.png"></td>
-						<td>5 Points</td>
-					</tr>
-				</table>
-				
-			</div>
+		
+		<h1 id="titleBanner" >Vegetable Assassin!</h1>
+		
+		<div id="instructions">
+			<h3>&spades; Instructions &spades;</h3>
+			<ul style="list-style-type:disc">
+				<li>
+					To start the game click anywhere in the
+					canvas to the left.
+				</li>
+				<br>
+				<li>
+					Try not the hit any grenades!
+						<img class="textImg2" src="./src/grenade.png">
+					You can only 
+					sustain 3 hits 
+						<img class="textImg" src="./src/x-mark.png"> 
+					 befor your game is over.
+				</li>
+				<br>
+				<li>
+					For each Flying veggie
+						<img class="textImg" src="./src/greenPepper.png">
+						<img class="textImg" src="./src/yellowPepper.png">
+						<img class="textImg" src="./src/redPepper.png">
+					 you assassinate
+						<img class="textImg2" src="./src/knife.png">
+						 you will gain the number of pionts that
+					veggie was worth. Point values are to the left.
+				</li>
+				<br>
+				<li>
+					Next rule
+				</li>
+				<br>
+				<li>
+					Rule after next
+				</li>
+			</ul> 
 		</div>
+		
+		<div id="mainContent">
+			<canvas id="gameCanvas" height="530" width="725"></canvas>
+			<canvas id="scoreCanvas" height="75" width="725"></canvas>
+		</div>
+
+		<div id="pointvalue">
+			<h3>&hearts; Points per Vegetable &hearts;</h3>		
+			<table id="pointTable">
+				<tr>
+					<th colspan="2">Veggie</th>
+					<th>Points</th>
+				</tr>
+				<tr>
+					<td>Broccoli</td>
+					<td><img class="tablePic" src="./src/broccoli.png"></td>
+					<td>20 Points</td>
+				</tr>
+				<tr>
+					<td>Pumpkin</td>
+					<td><img class="tablePic" src="./src/pumkin.gif"></td>
+					<td>15 Points</td>
+				</tr>
+				<tr>
+					<td>Artichoke</td>
+					<td><img class="tablePic" src="./src/artichoke.png"></td>
+					<td>10 Points</td>
+				</tr>
+				<tr>
+					<td>Eggplant</td>
+					<td><img class="tablePic" src="./src/eggplant.png"></td>
+					<td>10 Points</td>
+				</tr>
+				<tr>
+					<td>Tomato</td>
+					<td><img class="tablePic" src="./src/tomato.gif"></td>
+					<td>5 Points</td>
+				</tr>
+				<tr>
+					<td>Peppers</td>
+					<td>
+						<img class="tablePic" src="./src/greenPepper.png">
+						<img class="tablePic" src="./src/yellowPepper.png">
+						<img class="tablePic" src="./src/redPepper.png">
+					</td>
+					<td>5 Points each</td>
+				</tr>
+				<tr>
+					<td>Grenade</td>
+					<td><img class="tablePic" src="./src/grenade.png"></td>
+					<td><img src="./src/x-mark.png" width="50" height="50"></td>
+				</tr>
+			</table>
+		</div>
+		<h2 id="closingBanner" >Thanks for your visit!!</h2>
 	</body>
 </html>

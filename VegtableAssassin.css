@@ -1,42 +1,47 @@
-body {
-  background-color:#99CC00;
-  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
-}
-
-#mainPannel {
+html { 
+	background-color:#999999; /*#99CC00 #0099FF*/
 	position: absolute;
 	top: 0px;
 	left: 0px;
-	width: 100%;
 	height: 100%;
+	width: 100%;
+}
+
+body {
+	font-family: Futura, "Trebuchet MS", Arial, sans-serif;
 }
 
 #mainContent {
 	position: absolute;
-	top: 18%; 
-	left: 24.4%;
-	width:50%;
-	height:77%;
+	overflow: auto;
+	top: 16%; 
+	left: 24%;
+	right: 25%;
+	width:52%;
+	height:100%;
 }
 
 #titleBanner {
 	position: absolute;
-	left: 0.1%;
-	height: 11%;
-	width: 97%;
+	color: white;
+	text-shadow: 8px 6px 4px black;
+	font-family: "Papyrus", fantasy;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	font-size: 3.6em;
+	padding: 0.5%;
+	font-weight: bold;
+	height: 12%;
+	width: auto;
+	margin: 5px;
 	text-align: center;
-	border: solid black;
-	padding: 5px;
-	margin: 1%;
-	border-radius: 20px;
-	background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+	background: linear-gradient(to left, #660033,#990033,#FF6600,#336600,#99CC00);
 }
 
-h1 {
-	font-family: "Papyrus", fantasy;
-}
 
 h3 {
+	text-shadow: 6px 4px 2px black;
 	font-weight: bold;
 	font-size: 1.5em;
 	padding: 2px;
@@ -45,19 +50,18 @@ h3 {
 
 #instructions {
 	position: absolute;
-	top: 18%;
+	overflow: auto;
+	top: 16%;
 	left: 1%;
 	text-align: left;
 	padding: 10px;
-	margin: auto;
-	float: right;
-	height: 89%;
+	height: 88%;
 	width: 20%;
 	color: #FFFFFF;
-	background-color: #432E43;
 	border-radius: 15px;
 	opacity: 0.5;
 	border: solid #5E5E5E;
+	background: linear-gradient(to bottom, #432E43, #432EAA, #43AAAA, #4AAAAA, #AAAAAA);
 }
 
 #instructions:hover {
@@ -65,100 +69,129 @@ h3 {
 	border: solid black;
 }
 
-canvas {
+.textImg{
+	height: 6%;
+	width: 6%;
+}
+
+.textImg2 {
+	height: 8%;
+	width: 8%;
+}
+
+#gameCanvas {
 	position: relative;
 	width:725px;
 	height:530px;
-	margin-bottom: 20px;
-	margin:auto;
-	background-color:white;
-	border:8px groove black;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0%;
+	background-color: white;
+	border:4px solid black;
+	box-shadow: 10px 10px 6px #737373;
+	display: block;
+}
+
+#scoreCanvas {
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 1.5%;
+	width:725px;
+	height:75px;
+	background-color: white;
+	border:4px solid black;
+	box-shadow: 10px 10px 6px #737373;
 	display: block;
 }
 
 #pointvalue {
 	position: absolute;
-	top: 18%;
+	color: white;
+	overflow: auto;
+	top: 16%;
 	right: 1%;
 	text-align: left;
 	padding: 10px;
-	margin: auto;
 	float: right;
-	height: 89%;
+	height: 88%;
 	width: 20%;
-	background-color: #B54632;
+	background-color: #990033;
 	border-radius: 15px;
 	opacity: 0.5;
 	border: solid #5E5E5E;
 }
 
 #pointTable {
-	/*background-color: #B54632; */
 	margin-left: auto; /* these two line center the table in the midle of the div */
     margin-right: auto;
     width: 100%;
 	padding: 10px;
-	border: 8px solid #32A1B5; /* solid blue border 10px in width */
+	border: 8px solid #009966; /* solid blue border 10px in width */
     border-collapse: collapse;
 	border-radius: 15px;
 }
 
 #pointTable td {
-	border: 2px solid #32A1B5;
+	border: 2px solid #336600;
     border-collapse: collapse;
     padding: 5px; 
     text-align: center;
 }
 
 #pointTable th {
-	border: 2px solid #32A1B5;
+	border: 2px solid #009966;
     border-collapse: collapse;
     padding-bottom: 10px;
     padding: 5px;
     font-weight: bold;
-    background-color: #E68C7C;
+    background-color: #CC3D6D;
     text-align: center;
 }
 
 #pointvalue:hover {
 	opacity: 1.0;
 	border:solid black;
-	background-color: #32A1B5;
+	background-color: #009966;
 
 }
 
 #pointvalue:hover #pointTable {
 	/*background-color: #32A1B5;*/
-	border: 8px solid #B54632;
+	border: 8px solid #990033;
 }
 
 #pointvalue:hover th {
-	border: 2px solid #B54632;
-	background-color: #7CD6E6;
+	border: 2px solid #990033;
+	background-color: #3DCC9C;
 }
 
 #pointvalue:hover td {
-	border: 2px solid #B54632;
+	border: 2px solid #990033;
 }
 
-#tom {
+.tablePic {
 	height: 25%;
-	width: 25%;
-}
-
-#egg {
-	height: 25%;
-	width: 25%;
+	width: 30%;
 }
 
 #closingBanner {
-	position: relative;
+	position: absolute;
+	top: 106.5%;
+	left: 5px;
+	right: 5px;
+	margin-bottom: 5px;
+	padding: 2%;
+	color: white;
+	text-shadow: 8px 6px 4px black;
+	font-family: "Papyrus", fantasy;
 	text-align: center;
-	width: 100%;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	padding: 5px;
-	border: solid black;
-	background: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
-	border-radius: 20px;
+	vertical-align: middle;
+	height: 4%;
+	width: auto;
+	background: linear-gradient(to right, #660033,#990033,#FF6600,#336600,#99CC00);
+}
+
+#closingBanner:hover {
+	background: linear-gradient(to left, #660033,#990033,#FF6600,#336600,#99CC00);
 }

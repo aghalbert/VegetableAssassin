@@ -132,7 +132,7 @@ function start() {
 	veggies = new Array();
 	context.clearRect(0, 0, canvas.width, canvas.height);
 	canvas.removeEventListener("mousedown", start);
-	var rand = Math.random() * 1000; 
+	var rand = Math.random() * 1000 + 300; 
 
 	canvas.addEventListener("mousedown", collisionCheck, false);
 	var makeVeggiesId = window.setInterval(flyingVeggies, rand); 
@@ -142,7 +142,7 @@ function start() {
 		context.clearRect(0, 0, canvas.width, canvas.height);
 	}, 10000); //Change this back to 30000 
 
-	window.setTimeout(gameOver, 12000);
+	window.setTimeout(gameOver, 12500);
 }
 
 function collisionCheck(evt) {
@@ -205,7 +205,7 @@ function flyingVeggies() {
 		}
 	}, 10);
 
-	window.setTimeout(function() {clearInterval(id);}, 6500);
+	window.setTimeout(function() {clearInterval(id);}, 5000);
 }
 
 function pickRandomVeggie () {

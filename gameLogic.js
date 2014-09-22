@@ -169,7 +169,6 @@ function collisionCheck(evt) {
 			i++;
 		}	
 	}
-
 }
 
 function flyingVeggies() {
@@ -204,7 +203,7 @@ function flyingVeggies() {
 			//console.log("x=" + veg.x + "; y=" + veg.y + "; vx=" + vx + "; vy=" + vy + "; time=" + currentTime);
 			context.drawImage(veg.image, veg.x, veg.y, veg.width, veg.height);
 		}
-	}, 50);
+	}, 10);
 
 	window.setTimeout(function() {clearInterval(id);}, 6500);
 }
@@ -313,15 +312,15 @@ function updateScore(veg) {
 	} else if (veg == "beet"){
 		score += 5;
 	} else if (veg == "broccoli"){
-		score += 15;
+		score += 20;
 	} else if (veg == "yellowPepper"){
 		score += 5;
 	} else if (veg == "eggplant"){
-		score += 15;
+		score += 10;
 	} else if (veg == "greenPepper"){
 		score += 5;
 	} else if (veg == "pumkin"){
-		score += 10;
+		score += 15;
 	} else if (veg == "redPepper"){
 		score += 5;
 	} else {
@@ -339,8 +338,6 @@ function stk(stkNum){ // cant use strike it resevered for some reason
 	scoreContext.fillStyle = "black"
 	scoreContext.fillRect(145,5,208,65);
 	scoreContext.closePath();
-
-	var count;
 
 	for (i=0; i < stkNum; i++){
 

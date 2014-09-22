@@ -135,7 +135,7 @@ function start() {
 	veggies = new Array();
 	context.clearRect(0, 0, canvas.width, canvas.height);
 	canvas.removeEventListener("mousedown", start);
-	var rand = Math.random() * 1000 + 300; 
+	var rand = Math.random() * (1000 - 200 + 1) + 200; 
 
 	canvas.addEventListener("mousedown", collisionCheck, false);
 	var makeVeggiesId = window.setInterval(flyingVeggies, rand); 

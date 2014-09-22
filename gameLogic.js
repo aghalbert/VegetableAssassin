@@ -153,6 +153,9 @@ function collisionCheck(evt) {
 	var slash = new Image();
 	slash.src = "./src/slash.png";
 	context.drawImage(slash, x-slash.width/2, y-slash.height/2, slash.width, slash.height);	
+	setTimeout(function () {
+		context.clearRect(x-slash.width/2, y-slash.height/2, slash.width, slash.height);	
+	}, 100);
 
 	var i = 0;
 
@@ -293,6 +296,7 @@ function stk(stkNum){ // cant use strike it resevered for some reason
 }
 
 function gameOver() {
+	context.clearRect(0, 0, canvas.width, canvas.height);
 
 	context.beginPath();
 	context.fillStyle = homeGrd;

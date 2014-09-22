@@ -10,7 +10,7 @@ var startImage;
 var knife;
 var knife2;
 var x_mark; 
-var veggies = new Array();
+var veggies; 
 
 
 // Start of Script:
@@ -128,22 +128,21 @@ function Vegetable(type, path, x, y, width, height) {
 function start() {
 	// Click on the start button that will be in the middle canvas.
 	// this method should also be use to restart a new game after finishing an old one.
+	
+	veggies = new Array();
 	context.clearRect(0, 0, canvas.width, canvas.height);
 	canvas.removeEventListener("mousedown", start);
+	var rand = Math.random() * 1000; 
 
-	var intervalId = window.setInterval(update, 10);
-	flyingVeggies(); //just sends off one vegetable
-	//eventually we'll need something like this:
-	//window.setInterval(flyingVeggies, Math.random()*1000); 
+	canvas.addEventListener("mousedown", collisionCheck, false);
+	var makeVeggiesId = window.setInterval(flyingVeggies, rand); 
 
 	window.setTimeout( function () {
-		clearInterval(intervalId);
-		gameOver();
+		clearInterval(makeVeggiesId);
+		context.clearRect(0, 0, canvas.width, canvas.height);
 	}, 10000); //Change this back to 30000 
-}
 
-function update() {
-	canvas.addEventListener("mousedown", collisionCheck, false);
+	window.setTimeout(gameOver, 12000);
 }
 
 function collisionCheck(evt) {
@@ -158,14 +157,16 @@ function collisionCheck(evt) {
 
 	while(i < veggies.length) {
 		console.log(veggies[i].x + " " + veggies[i].y + " " + x + " " + y);
-		if(x > veggies[i].x && x < veggies[i].x + veggies[i].width && y > veggies[i].y && y < veggies[i].y + veggies[i].height){
+		if(veggies[i].x > canvas.width || veggies[i].y > canvas.height) {
+			veggies[i].hit = true;
+			veggies.splice(i, 1);
+		} else if(x > veggies[i].x && x < veggies[i].x + veggies[i].width && y > veggies[i].y && y < veggies[i].y + veggies[i].height){
 			veggieDestruction(veggies[i]);
 			veggies[i].hit = true;
 			veggies.splice(i, 1);
 			console.log("IM HIT");
 		} else {
 			i++;
-			console.log("ALL GOOD");
 		}	
 	}
 
@@ -176,12 +177,9 @@ function flyingVeggies() {
 	// If will display the fruit flying from one side of the screen to the other
 	// using projectile motion.
 
-	var veg = new Vegetable("eggplant", "./src/eggplant.png", 0, canvas.height/2, 50, 50)
-	veggies.push(veg);
-
-	// initial position
+	// initial position - we shold randomize these too (to some extent)
 	var x0 = 0;
-	var y0 = canvas.height/2;
+	var y0 = Math.random() * (canvas.height - 99);
 
 	//the angle of initial velocity
 	var theta = (Math.PI/6);
@@ -189,6 +187,10 @@ function flyingVeggies() {
 	//maybe someday we'll randomize these...
 	var vx = 175; // inital velocity in the x direction
 	var vy = -50; // initial velocity in the y direction
+
+	var veggieName = pickRandomVeggie();
+	var veg = new Vegetable(veggieName, "./src/" + veggieName + ".png", x0, y0, 50, 50)
+	veggies.push(veg);
 
 	var startTime = new Date().getTime(); 
 	var currentTime = 0; 
@@ -205,6 +207,48 @@ function flyingVeggies() {
 	}, 50);
 
 	window.setTimeout(function() {clearInterval(id);}, 6500);
+}
+
+function pickRandomVeggie () {
+	var max = 10;
+	var min = 1;
+	var rand = Math.floor(Math.random() * (max - min + 1)) + min;
+
+	switch (rand) {
+		case 1: 
+			return "artichoke";
+			break;
+		case 2:
+			return "beet";
+			break;
+		case 3:
+			return "broccoli";
+			break;
+		case 4: 
+			return "carrot";
+			break; 
+		case 5: 
+			return "eggplant";
+			break;
+		case 6: 
+			return "greenPepper";
+			break;
+		case 7: 
+			return "grenade"; 
+			break; 
+		case 8: 
+			return "pumkin";
+			break; 
+		case 9: 
+			return "redPepper";
+			break;
+		case 10: 
+			return "yellowPepper";
+			break;
+		default:
+			return "carrot";
+			break; 
+	}
 }
 
 function getXPosition(x0, vx0, time, theta) {
@@ -260,18 +304,32 @@ function displayScore() {
 	scoreContext.fillText(score,(scoreCanvas.width/2)+248,(scoreCanvas.height/2)+17);
 }
 
-function updateScore(vegg) {
+function updateScore(veg) {
 	
-	if (vegg == "tomato"){
-		score = score + 10;
-	} else if (vegg == "eggplant"){
-		score = score + 5;
-	} else if (vegg == "pumpken"){
-		score = score + 15;
+	if (veg == "grenade"){
+		stk(); 
+	} else if (veg == "artichoke"){
+		score += 10;
+	} else if (veg == "beet"){
+		score += 5;
+	} else if (veg == "broccoli"){
+		score += 15;
+	} else if (veg == "yellowPepper"){
+		score += 5;
+	} else if (veg == "eggplant"){
+		score += 15;
+	} else if (veg == "greenPepper"){
+		score += 5;
+	} else if (veg == "pumkin"){
+		score += 10;
+	} else if (veg == "redPepper"){
+		score += 5;
 	} else {
-		
+		score += 5;
 	}
-}
+
+	displayScore();
+}		
 
 function stk(stkNum){ // cant use strike it resevered for some reason
 
@@ -282,7 +340,7 @@ function stk(stkNum){ // cant use strike it resevered for some reason
 	scoreContext.fillRect(145,5,208,65);
 	scoreContext.closePath();
 
-	var count
+	var count;
 
 	for (i=0; i < stkNum; i++){
 
@@ -318,6 +376,7 @@ function gameOver() {
 	context.fillText("Click to play again!", midX, midY + 80);
 	
 	canvas.addEventListener("mousedown", start);
+	canvas.removeEventListener("mousedown", collisionCheck);
 
 	stk(3);
 }

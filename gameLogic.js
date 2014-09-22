@@ -78,13 +78,13 @@ function loadCanvas() {
 	context.fillText("Start Game", midX, midY-40);
 	context.closePath();
 
-	knife.onload = function () {
+	knife2.onload = function () {
 		context.drawImage(knife2, midX-300, midY+60,200,140); //left knife
 	}
 	startImage.onload = function () {
 		context.drawImage(startImage,midX-100,midY+40,220,180); // center fruit
 	}
-	knife2.onload = function () {
+	knife.onload = function () {
 		context.drawImage(knife, midX+100, midY+60,200,140); // right knife
 	}
 

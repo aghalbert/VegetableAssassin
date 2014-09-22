@@ -14,7 +14,7 @@ body {
 #mainContent {
 	position: absolute;
 	overflow: auto;
-	top: 18%; 
+	top: 25%; 
 	left: 24%;
 	right: 25%;
 	width:52%;
@@ -38,13 +38,14 @@ body {
 	width: auto;
 	margin: 5px;
 	text-align: center;
+	opacity: 0.5;
 	background: linear-gradient(to left, #660033,#990033,#FF6600,#336600,#99CC00);
 }
 
 #banner {
 	margin: auto;
-	height: 90%;
-	width: 40%;
+	height: 100%;
+	width: 50%;
 	/* background-image:url('src/Banner.png');
 	background-position:center center;
 	background-repeat:no-repeat; */ 
@@ -61,7 +62,7 @@ h3 {
 #instructions {
 	position: absolute;
 	overflow: auto;
-	top: 16%;
+	top: 25%;
 	left: 1%;
 	text-align: left;
 	padding: 10px;
@@ -119,7 +120,7 @@ h3 {
 	position: absolute;
 	color: white;
 	overflow: auto;
-	top: 16%;
+	top: 25%;
 	right: 1%;
 	text-align: left;
 	padding: 10px;

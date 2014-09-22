@@ -148,11 +148,11 @@ function start() {
 	context.stroke();
 	
 	var countDown = window.setInterval( function () {
+		context.clearRect(canvas.width-40, 0, 40, 40);
 		count=count-1;
 		if(count<=0) {
 			clearInterval(countDown);
 		} else {
-		context.clearRect(canvas.width-50, 50, canvas.width, 0);
 		context.beginPath();
 		context.fillText(count, canvas.width-20, 20);
 		context.stroke();

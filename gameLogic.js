@@ -33,7 +33,7 @@ function setCanvasVars() {
 	homeGrd = context.createRadialGradient(midX,midY,0,360,200,800);
 
 	startImage = new Image();
-	startImage.src = "./src/startVeg.png";
+	startImage.src = "./src/peppers.png";
 	
 	knife = new Image();
 	knife.src= "./src/knife.png";
@@ -83,7 +83,7 @@ function loadCanvas() {
 		context.drawImage(knife2, midX-300, midY+60,200,140); //left knife
 	}
 	startImage.onload = function () {
-		context.drawImage(startImage,midX-100,midY+40,220,180); // center fruit
+		context.drawImage(startImage,midX-120,midY+120,250,100); // center fruit
 	}
 	knife.onload = function () {
 		context.drawImage(knife, midX+100, midY+60,200,140); // right knife

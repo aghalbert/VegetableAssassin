@@ -132,7 +132,7 @@ function start() {
 	veggies = new Array();
 	context.clearRect(0, 0, canvas.width, canvas.height);
 	canvas.removeEventListener("mousedown", start);
-	var rand = Math.random() * 1000; 
+	var rand = Math.random() * 1000 + 300; 
 
 	canvas.addEventListener("mousedown", collisionCheck, false);
 	var makeVeggiesId = window.setInterval(flyingVeggies, rand); 
@@ -142,7 +142,7 @@ function start() {
 		context.clearRect(0, 0, canvas.width, canvas.height);
 	}, 10000); //Change this back to 30000 
 
-	window.setTimeout(gameOver, 12000);
+	window.setTimeout(gameOver, 12500);
 }
 
 function collisionCheck(evt) {
@@ -152,6 +152,9 @@ function collisionCheck(evt) {
 	var slash = new Image();
 	slash.src = "./src/slash.png";
 	context.drawImage(slash, x-slash.width/2, y-slash.height/2, slash.width, slash.height);	
+	setTimeout(function () {
+		context.clearRect(x-slash.width/2, y-slash.height/2, slash.width, slash.height);	
+	}, 100);
 
 	var i = 0;
 
@@ -169,7 +172,6 @@ function collisionCheck(evt) {
 			i++;
 		}	
 	}
-
 }
 
 function flyingVeggies() {
@@ -204,9 +206,9 @@ function flyingVeggies() {
 			//console.log("x=" + veg.x + "; y=" + veg.y + "; vx=" + vx + "; vy=" + vy + "; time=" + currentTime);
 			context.drawImage(veg.image, veg.x, veg.y, veg.width, veg.height);
 		}
-	}, 50);
+	}, 10);
 
-	window.setTimeout(function() {clearInterval(id);}, 6500);
+	window.setTimeout(function() {clearInterval(id);}, 5000);
 }
 
 function pickRandomVeggie () {
@@ -313,15 +315,15 @@ function updateScore(veg) {
 	} else if (veg == "beet"){
 		score += 5;
 	} else if (veg == "broccoli"){
-		score += 15;
+		score += 20;
 	} else if (veg == "yellowPepper"){
 		score += 5;
 	} else if (veg == "eggplant"){
-		score += 15;
+		score += 10;
 	} else if (veg == "greenPepper"){
 		score += 5;
 	} else if (veg == "pumkin"){
-		score += 10;
+		score += 15;
 	} else if (veg == "redPepper"){
 		score += 5;
 	} else {
@@ -340,8 +342,6 @@ function stk(stkNum){ // cant use strike it resevered for some reason
 	scoreContext.fillRect(145,5,208,65);
 	scoreContext.closePath();
 
-	var count;
-
 	for (i=0; i < stkNum; i++){
 
 		scoreContext.drawImage(x_mark,160+(i*60)+((i-1)*5),8,60,60);
@@ -351,6 +351,7 @@ function stk(stkNum){ // cant use strike it resevered for some reason
 }
 
 function gameOver() {
+	context.clearRect(0, 0, canvas.width, canvas.height);
 
 	context.beginPath();
 	context.fillStyle = homeGrd;

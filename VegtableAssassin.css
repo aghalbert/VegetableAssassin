@@ -66,7 +66,7 @@ h3 {
 	left: 1%;
 	text-align: left;
 	padding: 10px;
-	height: 88%;
+	height: 95%;
 	width: 18%;
 	color: #FFFFFF;
 	border-radius: 15px;
@@ -92,13 +92,13 @@ h3 {
 
 #gameCanvas {
 	position: relative;
-	width:725px;
-	height:530px;
+	width: 725px;
+	height: 530px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 0%;
 	background-color: white;
-	border:4px solid black;
+	border: 4px solid black;
 	box-shadow: 10px 10px 6px #737373;
 	display: block;
 }
@@ -108,10 +108,10 @@ h3 {
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 1.5%;
-	width:725px;
-	height:75px;
+	width: 725px;
+	height: 75px;
 	background-color: white;
-	border:4px solid black;
+	border: 4px solid black;
 	box-shadow: 10px 10px 6px #737373;
 	display: block;
 }
@@ -125,7 +125,7 @@ h3 {
 	text-align: left;
 	padding: 10px;
 	float: right;
-	height: 88%;
+	height: 95%;
 	width: 18%;
 	background-color: #990033;
 	border-radius: 15px;
@@ -216,11 +216,10 @@ h3 {
 	width:auto;
 }
 
+
 #closingBanner {
 	position: absolute;
-	margin-top: 1%;
-	margin-bottom: 0.5%;
-	bottom: -25%;
+	top: 88.4%;
 	height: 50px;
 	right: 1%;
 	left: 1%;
@@ -229,7 +228,7 @@ h3 {
 	text-shadow: 8px 6px 4px black;
 	font-family: "Papyrus", fantasy;
 	text-align: center;
-	height: 2%;
+	height: 6%;
 	opacity: 0.6;
 	width: auto;
 	background: linear-gradient(to right, #660033,#990033,#FF6600,#336600,#99CC00);

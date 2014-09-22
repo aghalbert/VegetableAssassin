@@ -143,10 +143,11 @@ function start() {
 	window.setTimeout( function () {
 		clearInterval(makeVeggiesId);
 		context.clearRect(0, 0, canvas.width, canvas.height);
-	}, 10000); //Change this back to 30000 
+	}, 30000); //Change this back to 30000 
 
-	window.setTimeout(gameOver, 12500);
+	window.setTimeout(gameOver, 30000);
 }
+
 
 function collisionCheck(evt) {
 
@@ -222,7 +223,7 @@ function pickRandomVeggie () {
 
 	switch (rand) {
 		case 1: 
-			return "artichoke";
+			return "grenade"; // change this back to artichoke latter the image is so big we need to make it smaller.
 			break;
 		case 2:
 			return "beet";
@@ -252,7 +253,7 @@ function pickRandomVeggie () {
 			return "yellowPepper";
 			break;
 		default:
-			return "carrot";
+			return "grenade";
 			break; 
 	}
 }
@@ -344,9 +345,13 @@ function stk(stkNum){
 	scoreContext.fillRect(145,5,208,65);
 	scoreContext.closePath();
 
-	for (i=0; i < stkNum; i++){
+	for (i=0; (i < stkNum)&&(i < 3); i++){
 
 		scoreContext.drawImage(x_mark,160+(i*60)+((i-1)*5),8,60,60);
+	}
+
+	if (stkNum >= 3 ){ // this works to bring up the gameOver screen but does not stop the veggies
+		gameOver();
 	}
 }
 
@@ -365,7 +370,7 @@ function gameOver() {
 
 	context.beginPath();
 	context.fillStyle = "black"
-	context.fillRect(midX-80,midY-54,160,65);
+	context.fillRect(midX-80,midY-60,160,75);
 	context.stroke();
 
 	context.fillStyle = "blue";
@@ -379,6 +384,8 @@ function gameOver() {
 	canvas.addEventListener("mousedown", start);
 	canvas.removeEventListener("mousedown", collisionCheck);
 
+	displayScore();
+	
 	score = 0;
 	strikeNum = 0;
 }

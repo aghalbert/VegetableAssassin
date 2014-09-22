@@ -139,13 +139,34 @@ function start() {
 
 	canvas.addEventListener("mousedown", collisionCheck, false);
 	var makeVeggiesId = window.setInterval(flyingVeggies, rand); 
-
+	
+	var count = 30;
+	context.beginPath();
+	context.font = "20px Arial";
+	context.fillStyle = "black"
+	context.fillText(count, canvas.width-20,20);
+	context.stroke();
+	
+	var countDown = window.setInterval( function () {
+		count=count-1;
+		if(count<=0) {
+			clearInterval(countDown);
+		} else {
+		context.clearRect(canvas.width-50, 50, canvas.width, 0);
+		context.beginPath();
+		context.fillText(count, canvas.width-20, 20);
+		context.stroke();
+		}
+	}, 1000);
+	context.closePath();
+	
 	window.setTimeout( function () {
+		clearInterval(countDown);
 		clearInterval(makeVeggiesId);
 		context.clearRect(0, 0, canvas.width, canvas.height);
-	}, 10000); //Change this back to 30000 
+	}, 30000); 
 
-	window.setTimeout(gameOver, 12500);
+	window.setTimeout(gameOver, 32500);
 }
 
 function collisionCheck(evt) {

@@ -17,6 +17,7 @@ var veggies;
 function setCanvasVars() {
 	
 	score = 0;
+	strikeNum = 0;
 
 	canvas = document.getElementById("gameCanvas");
 	context = canvas.getContext("2d");
@@ -128,6 +129,8 @@ function Vegetable(type, path, x, y, width, height) {
 function start() {
 	// Click on the start button that will be in the middle canvas.
 	// this method should also be use to restart a new game after finishing an old one.
+	displayScore();
+	stk(0);
 	
 	veggies = new Array();
 	context.clearRect(0, 0, canvas.width, canvas.height);
@@ -146,6 +149,7 @@ function start() {
 }
 
 function collisionCheck(evt) {
+
 	var x = evt.offsetX; 
 	var y = evt.offsetY; 
 	
@@ -282,8 +286,9 @@ function veggieDestruction(veg) {
 }
 
 function bomHit() {
-
-	stk(); // this will update 
+	//some cool effects...
+	strikeNum = strikeNum + 1;
+	stk(strikeNum); // this will update 
 }
 
 function chopTrail() {
@@ -309,7 +314,7 @@ function displayScore() {
 function updateScore(veg) {
 	
 	if (veg == "grenade"){
-		stk(); 
+		bomHit(); 
 	} else if (veg == "artichoke"){
 		score += 10;
 	} else if (veg == "beet"){
@@ -333,10 +338,7 @@ function updateScore(veg) {
 	displayScore();
 }		
 
-function stk(stkNum){ // cant use strike it resevered for some reason
-
-	stkNum = (typeof stkNum == null) ? (strikeNum+1) : stkNum; // if there is no stkNum provided defalt to stickNum + 1  (the new global number the strikes)
-
+function stk(stkNum){
 	scoreContext.beginPath();
 	scoreContext.fillStyle = "black"
 	scoreContext.fillRect(145,5,208,65);
@@ -346,8 +348,6 @@ function stk(stkNum){ // cant use strike it resevered for some reason
 
 		scoreContext.drawImage(x_mark,160+(i*60)+((i-1)*5),8,60,60);
 	}
-
-	strikeNum++;
 }
 
 function gameOver() {
@@ -379,7 +379,8 @@ function gameOver() {
 	canvas.addEventListener("mousedown", start);
 	canvas.removeEventListener("mousedown", collisionCheck);
 
-	stk(3);
+	score = 0;
+	strikeNum = 0;
 }
 
 

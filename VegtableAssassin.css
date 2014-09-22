@@ -34,21 +34,21 @@ body {
 	font-size: 3.6em;
 	padding: 0.5%;
 	font-weight: bold;
-	height: 20%;
+	height: 21%;
 	width: auto;
 	margin: 5px;
 	text-align: center;
-	opacity: 0.5;
+	opacity: 0.4;
 	background: linear-gradient(to left, #660033,#990033,#FF6600,#336600,#99CC00);
 }
 
 #banner {
-	margin: auto;
-	height: 100%;
-	width: 50%;
-	/* background-image:url('src/Banner.png');
-	background-position:center center;
-	background-repeat:no-repeat; */ 
+	position: absolute;
+	top:2.5%;
+	left:14%;
+	height:20%;
+	width:75%;
+	opacity: 1.0;
 }
 
 h3 {
@@ -187,18 +187,16 @@ h3 {
 }
 
 #closingBanner {
-	position: absolute;
-	top: 106.5%;
-	left: 5px;
-	right: 5px;
-	margin-bottom: 5px;
-	padding: 2%;
+	position: relative;
+	margin-top: 59%;
+	margin-bottom: 0.5%;
+	padding: 1%;
 	color: white;
 	text-shadow: 8px 6px 4px black;
 	font-family: "Papyrus", fantasy;
 	text-align: center;
-	vertical-align: middle;
-	height: 4%;
+	height: 2%;
+	opacity: 0.6;
 	width: auto;
 	background: linear-gradient(to right, #660033,#990033,#FF6600,#336600,#99CC00);
 }

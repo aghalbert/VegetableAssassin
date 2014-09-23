@@ -182,37 +182,37 @@ h3 {
 }
 
 .tablePeppers {
-	height: 1.5%;
+	height: 12.5%;
 	width: 25%;
 }
 
-#tableBrocoli {
-	height: 10%;
+#tableBroccoli {
+	height: 25%;
 	width: auto;
 }
 
-#tablePumkin {
-	height: 18%;
+#tablePumpkin {
+	height: 25%;
 	width: auto;
 }
 
-#tableArt {
-	height: 0.8%;
+#tableArtichoke {
+	height: 25%;
 	width: auto;
 }
 
-#tableEgg {
-	height: 3%;
+#tableEggplant{
+	height: 25%;
 	width: auto;
 }
 
 #tableCarrot {
-	height: 22%;
+	height: 25%;
 	width: auto;
 }
 
 #tableGrenade{
-	height:1.75%; 
+	height: 25%;
 	width:auto;
 }
 

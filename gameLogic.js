@@ -11,7 +11,7 @@ var knife;
 var knife2;
 var x_mark; 
 var veggies; 
-
+var over;
 
 // Start of Script:
 function setCanvasVars() {
@@ -33,7 +33,7 @@ function setCanvasVars() {
 	homeGrd = context.createRadialGradient(midX,midY,0,360,200,800);
 
 	startImage = new Image();
-	startImage.src = "./src/startVeg.png";
+	startImage.src = "./src/peppers.png";
 	
 	knife = new Image();
 	knife.src= "./src/knife.png";
@@ -83,7 +83,7 @@ function loadCanvas() {
 		context.drawImage(knife2, midX-300, midY+60,200,140); //left knife
 	}
 	startImage.onload = function () {
-		context.drawImage(startImage,midX-100,midY+40,220,180); // center fruit
+		context.drawImage(startImage,midX-120,midY+120,250,100); // center fruit
 	}
 	knife.onload = function () {
 		context.drawImage(knife, midX+100, midY+60,200,140); // right knife
@@ -131,21 +131,54 @@ function start() {
 	// this method should also be use to restart a new game after finishing an old one.
 	displayScore();
 	stk(0);
+	over = false;
 	
 	veggies = new Array();
 	context.clearRect(0, 0, canvas.width, canvas.height);
 	canvas.removeEventListener("mousedown", start);
-	var rand = Math.random() * 1000 + 300; 
+	var rand = Math.random() * (700 - 200 + 1) + 200;
 
 	canvas.addEventListener("mousedown", collisionCheck, false);
 	var makeVeggiesId = window.setInterval(flyingVeggies, rand); 
+	
+	var count = 30;
+	context.beginPath();
+	context.font = "20px Arial";
+	context.fillStyle = "black"
+	context.fillText(count, canvas.width-20,20);
+	context.stroke();
 
 	window.setTimeout( function () {
+		clearInterval(countDown);
 		clearInterval(makeVeggiesId);
+		veggies.splice(0, veggies.length);
+		over = true;
 		context.clearRect(0, 0, canvas.width, canvas.height);
-	}, 30000); //Change this back to 30000 
+	}, 30000); 
 
-	window.setTimeout(gameOver, 30000);
+	var gameTimer = window.setTimeout(gameOver, 31500);
+	
+	var countDown = window.setInterval( function () {
+
+		if(over) {
+			console.log("START");
+			context.clearRect(canvas.width-40, 0, 40, 40);
+			clearInterval(countDown);
+			clearTimeout(gameTimer);
+			window.setTimeout(gameOver, 500);
+		}
+
+		context.clearRect(canvas.width-40, 0, 40, 40);
+		count=count-1;
+		if(count<=0) {
+			clearInterval(countDown);
+		} else {
+		context.beginPath();
+		context.fillText(count, canvas.width-20, 20);
+		context.stroke();
+		}
+	}, 1000);
+	context.closePath();
 }
 
 
@@ -184,7 +217,7 @@ function flyingVeggies() {
 	// If will display the fruit flying from one side of the screen to the other
 	// using projectile motion.
 
-	// initial position - we shold randomize these too (to some extent)
+	// initial position 
 	var x0 = 0;
 	var y0 = Math.random() * (canvas.height - 99);
 
@@ -192,7 +225,7 @@ function flyingVeggies() {
 	var theta = (Math.PI/6);
 
 	//maybe someday we'll randomize these...
-	var vx = 175; // inital velocity in the x direction
+	var vx = 200; // inital velocity in the x direction
 	var vy = -50; // initial velocity in the y direction
 
 	var veggieName = pickRandomVeggie();
@@ -203,12 +236,15 @@ function flyingVeggies() {
 	var currentTime = 0; 
 
 	var id = window.setInterval(function() { 
-		if(!veg.hit) {
+		if(over) {
+			clearInterval(id);
+		}
+
+		else if(!veg.hit) {
 			context.clearRect(veg.x, veg.y, veg.width, veg.height);
 			currentTime = (new Date().getTime() - startTime)/1000;
 			veg.x = getXPosition(x0, vx, currentTime, theta);
 			veg.y = getYPosition(y0, vy, currentTime, theta);
-			//console.log("x=" + veg.x + "; y=" + veg.y + "; vx=" + vx + "; vy=" + vy + "; time=" + currentTime);
 			context.drawImage(veg.image, veg.x, veg.y, veg.width, veg.height);
 		}
 	}, 10);
@@ -278,7 +314,6 @@ function getVy(vy0, time, theta) {
 }
 
 function veggieDestruction(veg) {
-
 	// will display the flying veggies when being chopped and splatting on the screen.
 	// this will likely also update the score or will call that method.
 	context.clearRect(veg.x, veg.y, veg.width, veg.height);
@@ -286,16 +321,10 @@ function veggieDestruction(veg) {
 	console.log("VEGGIE DESTRUCTION");
 }
 
-function bomHit() {
+function bombHit() {
 	//some cool effects...
 	strikeNum = strikeNum + 1;
 	stk(strikeNum); // this will update 
-}
-
-function chopTrail() {
-
-	// this will display the trail that follows the mouse when it is "chopping"
-	// accross the screen. we may need to do this in differnt method or place.
 }
 
 function displayScore() {
@@ -315,7 +344,7 @@ function displayScore() {
 function updateScore(veg) {
 	
 	if (veg == "grenade"){
-		bomHit(); 
+		bombHit(); 
 	} else if (veg == "artichoke"){
 		score += 10;
 	} else if (veg == "beet"){
@@ -350,8 +379,12 @@ function stk(stkNum){
 		scoreContext.drawImage(x_mark,160+(i*60)+((i-1)*5),8,60,60);
 	}
 
-	if (stkNum >= 3 ){ // this works to bring up the gameOver screen but does not stop the veggies
-		gameOver();
+	if(stkNum >= 3) {
+		console.log("STRIKE");
+
+		over = true;
+		veggies.splice(0, veggies.length);
+		gaveOver();
 	}
 }
 

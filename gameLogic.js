@@ -172,8 +172,14 @@ function start() {
 		count=count-1;
 		if(count<=0) {
 			clearInterval(countDown);
+		} else if(count<=10){
+		context.beginPath();
+		context.fillStyle="red";
+		context.fillText(count, canvas.width-20, 20);
+		context.stroke();
 		} else {
 		context.beginPath();
+		context.fillStyle="black";
 		context.fillText(count, canvas.width-20, 20);
 		context.stroke();
 		}

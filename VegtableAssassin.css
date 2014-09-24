@@ -181,45 +181,20 @@ h3 {
 	border: 2px solid #990033;
 }
 
-.tablePeppers {
+.tablePic {
 	height: 12.5%;
-	width: 25%;
-}
-
-#tableBroccoli {
-	height: 25%;
 	width: auto;
 }
 
-#tablePumpkin {
-	height: 25%;
-	width: auto;
-}
-
-#tableArtichoke {
-	height: 25%;
-	width: auto;
-}
-
-#tableEggplant{
-	height: 25%;
-	width: auto;
-}
-
-#tableCarrot {
-	height: 25%;
-	width: auto;
-}
-
-#tableGrenade{
-	height: 25%;
-	width:auto;
+.tablePic2 {
+	height: 10.5%;
+	width: 30%
 }
 
 
 #closingBanner {
 	position: absolute;
-	top: 88.4%;
+	top: 90%;
 	height: 50px;
 	right: 1%;
 	left: 1%;

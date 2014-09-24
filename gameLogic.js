@@ -202,7 +202,7 @@ function collisionCheck(evt) {
 			veggies[i].hit = true;
 			veggies.splice(i, 1);
 		} else if(x > veggies[i].x && x < veggies[i].x + veggies[i].width && y > veggies[i].y && y < veggies[i].y + veggies[i].height){
-			veggieDestruction(veggies[i]);
+			veggieDestruction(veggies[i], evt);
 			veggies[i].hit = true;
 			veggies.splice(i, 1);
 			console.log("IM HIT");
@@ -259,7 +259,7 @@ function pickRandomVeggie () {
 
 	switch (rand) {
 		case 1: 
-			return "grenade"; // change this back to artichoke latter the image is so big we need to make it smaller.
+			return "artichoke"; // change this back to artichoke latter the image is so big we need to make it smaller.
 			break;
 		case 2:
 			return "beet";
@@ -280,7 +280,7 @@ function pickRandomVeggie () {
 			return "grenade"; 
 			break; 
 		case 8: 
-			return "pumkin";
+			return "pumpkin";
 			break; 
 		case 9: 
 			return "redPepper";
@@ -294,34 +294,48 @@ function pickRandomVeggie () {
 	}
 }
 
-function getXPosition(x0, vx0, time, theta) {
+function getXPosition(x0, v0, time, theta) {
 		// rx(time) = [Vx0*Cos(theta)*t]
-	return ( x0+(vx0*Math.cos(theta)*time) );
+	return ( x0+(v0*Math.cos(theta)*time) );
 }
 
-function getVx(vx0, time, theta){
-	return ( (vx0*Math.cos(theta)) );
+function getVx(v0, time, theta){ // this finds the volcity in the x direction given initial volcity, time, and the angle(theta) to the horazontal
+		// Vx(time) = [Vx0*Cos(theta)]
+	return ( (v0*Math.cos(theta)) );
 }
 
-function getYPosition(y0, vy0, time, theta) {
+function getYPosition(y0, v0, time, theta) {
 		// ry(time)= [height] + [(V0*Sin(theta))time] + [(1/2)*g*t^2]
-	return ( y0-( vy0*Math.sin(theta)*time )+( 0.5*(9.81)*(time*time) ) ); 
+	return ( y0-( v0*Math.sin(theta)*time )+( 0.5*(9.81)*(time*time) ) ); 
 }
 
-function getVy(vy0, time, theta) {
+function getVy(v0, time, theta) {
 		// Vy(time)= [V0*Sin(theta)] + [-g*t]
-	return ( -(vy0*Math.sin(theta))+((9.81)*time) );
+	return ( -(v0*Math.sin(theta))+((9.81)*time) );
 }
 
-function veggieDestruction(veg) {
+function veggieDestruction(veg, evt) {
 	// will display the flying veggies when being chopped and splatting on the screen.
 	// this will likely also update the score or will call that method.
 	context.clearRect(veg.x, veg.y, veg.width, veg.height);
-	updateScore(veg.type)
+	updateScore(veg.type, evt)
 	console.log("VEGGIE DESTRUCTION");
 }
 
-function bombHit() {
+function bombHit(evt) {
+
+	var x = evt.offsetX; 
+	var y = evt.offsetY;
+
+	var boom = new Image();
+	boom.src = "./src/boom.png";
+
+	context.drawImage(boom, x-50, y-50, 100, 100);	
+	setTimeout(function () {
+		context.clearRect(x-50, y-50, 100, 100);	
+	}, 300);
+
+
 	//some cool effects...
 	strikeNum = strikeNum + 1;
 	stk(strikeNum); // this will update 
@@ -341,10 +355,10 @@ function displayScore() {
 	scoreContext.fillText(score,(scoreCanvas.width/2)+248,(scoreCanvas.height/2)+17);
 }
 
-function updateScore(veg) {
+function updateScore(veg, evt) {
 	
 	if (veg == "grenade"){
-		bombHit(); 
+		bombHit(evt); 
 	} else if (veg == "artichoke"){
 		score += 10;
 	} else if (veg == "beet"){

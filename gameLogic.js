@@ -136,7 +136,7 @@ function start() {
 	veggies = new Array();
 	context.clearRect(0, 0, canvas.width, canvas.height);
 	canvas.removeEventListener("mousedown", start);
-	var rand = Math.random() * (700 - 200 + 1) + 200;
+	var rand = Math.random() * (500 - 200 + 1) + 200;
 
 	canvas.addEventListener("mousedown", collisionCheck, false);
 	var makeVeggiesId = window.setInterval(flyingVeggies, rand); 
@@ -172,8 +172,14 @@ function start() {
 		count=count-1;
 		if(count<=0) {
 			clearInterval(countDown);
+		} else if(count<=10){
+		context.beginPath();
+		context.fillStyle="red";
+		context.fillText(count, canvas.width-20, 20);
+		context.stroke();
 		} else {
 		context.beginPath();
+		context.fillStyle="black";
 		context.fillText(count, canvas.width-20, 20);
 		context.stroke();
 		}
@@ -253,13 +259,13 @@ function flyingVeggies() {
 }
 
 function pickRandomVeggie () {
-	var max = 10;
+	var max = 12;
 	var min = 1;
 	var rand = Math.floor(Math.random() * (max - min + 1)) + min;
 
 	switch (rand) {
 		case 1: 
-			return "artichoke"; // change this back to artichoke latter the image is so big we need to make it smaller.
+			return "artichoke"; 
 			break;
 		case 2:
 			return "beet";

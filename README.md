@@ -1,4 +1,4 @@
-Colorado School of Mines CSCI461
+Colorado School of Mines CSCI461 Fall 2014
 
 Browser specifications:
 
